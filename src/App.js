@@ -45,20 +45,26 @@ function App() {
       }
 
       {
-        modal ? <Modal/> : null
+        modal ? <Modal 글제목={글제목} 제목변경={제목변경}/> : null
       }
-      
-
+     목
     </div>
   );
 }
 
-function Modal(){
+function Modal(props){
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4> {props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={()=>{
+
+        const 새글 = [...props.글제목];
+        새글[0] = '여자코트 추천';
+        props.제목변경(새글);
+
+      }}>글수정</button>
     </div>
   )  
 }
