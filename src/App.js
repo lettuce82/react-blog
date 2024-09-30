@@ -1,7 +1,7 @@
 /* esLint-disable */
 
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
 
@@ -66,14 +66,15 @@ function App() {
         </>
         ))
       }
-      <input onChange={(e)=> { 입력값변경(e.target.value); console.log(입력값); }}/>
+      <Modal2/>
+      <input onChange={(e)=> { 입력값변경(e.target.value);}}/>
       <button onClick={ ()=> {
         제목변경([입력값, ...글제목]);
         따봉변경([0, ...따봉]);
         setModal([false, ...modal]);
         입력값변경('');
       }
-       }>추가하기</button>
+       }>글발행</button>
     </div>
   );
 }
@@ -93,6 +94,25 @@ function Modal(props){
       }}>글수정</button>
     </div>
   )  
+}
+
+class Modal2 extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+  render(){
+    return (
+      <div>안녕 {this.state.age}
+      <button onClick={()=> {
+        this.setState({age : 21})
+      }}>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
